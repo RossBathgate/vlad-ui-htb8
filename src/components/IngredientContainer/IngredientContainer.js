@@ -1,52 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Ingredient from "./Ingredient";
 import Category from "./Category";
 import constants from "./../../constants";
+import axios from "axios";
 
 const IngredientContainer = (props) => {
-  // temporary for now:
-  const data = {
-    CATEGORIES: [
-      {
-        title: "VEGETABLES",
-        id: 1,
-        image: "https://",
-        ingredients: [
-          {
-            title: "onion",
-            id: 100,
-            image: "https://...",
-            vegetarian: 1, //1 true, 0 false
-            vegan: 1,
-          },
-          {
-            title: "pepper",
-            id: 101,
-            image: "https://...",
-            vegetarian: 1,
-            vegan: 1,
-          },
-        ],
-      },
-      {
-        title: "HERBS AND SPICES",
-        id: 7,
-        image: "https://",
-        ingredients: [
-          { title: "apple", id: 100, image: "https://..." },
-          { title: "orange", id: 101, image: "https://..." },
-        ],
-      },
-    ],
-  };
   const [currentCategory, setCurrentCategory] = useState(null);
+  const [categoryData, setCategoryData] = useState(null);
+  useEffect(() => {
+    const getIngredients = async () => {
+      const result = await axios.get(constants.backend.getIngredients);
+      setCategoryData(result.data);
+    };
+    getIngredients();
+  }, []);
+
   const currentIngredients =
     currentCategory &&
-    data.CATEGORIES.find((elem) => elem.id === currentCategory).ingredients;
+    categoryData.CATEGORIES.find((elem) => elem.id === currentCategory)
+      .ingredients;
 
   const categoryClickHandler = (id) => {
-    const category = data.CATEGORIES.find((elem) => elem.id === id);
+    const category = categoryData.CATEGORIES.find((elem) => elem.id === id);
     setCurrentCategory(category.id);
   };
 
@@ -57,7 +33,8 @@ const IngredientContainer = (props) => {
   return (
     <div>
       {currentCategory === null &&
-        data.CATEGORIES.map((category) => (
+        categoryData &&
+        categoryData.CATEGORIES.map((category) => (
           <Category
             key={category.id}
             id={category.id}

@@ -2,14 +2,12 @@ const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 
 let config = {
-  entry: {
-    index: "./src/index.js",
-  },
+  entry: ["babel-polyfill", "./src/index.js"],
 
   output: {
     path: path.join(__dirname, "dist"),
     hashFunction: "xxhash64",
-    filename: "[name].js",
+    filename: "index.js",
   },
 
   module: {
