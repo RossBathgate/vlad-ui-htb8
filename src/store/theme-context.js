@@ -6,8 +6,13 @@ const theme = {
     primary: "blue",
   },
   fonts: {
-    default: "Arial"
-  }
+    default: "Arial",
+  },
+  breakpoints: {
+    mobile: 0,
+    tablet: 737,
+    desktop: 1195,
+  },
 };
 
 // Create theme provider
