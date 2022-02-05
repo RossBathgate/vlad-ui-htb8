@@ -4,18 +4,17 @@ import Nav from "./Nav/Nav";
 
 const Header = (props) => {
   return (
-    <div>
-      <Nav onPageChange={props.onPageChange} />
-    </div>
+    <Style.Header>
+      <Nav onPageChange={props.onPageChange} currentPage={props.currentPage} />
+    </Style.Header>
   );
 };
 
 export default Header;
 
 const Style = {
-  TestDiv: styled.div`
-    & p {
-      color: ${(props) => props.theme.colors.primary};
-    }
+  Header: styled.div`
+    width: 100%;
+    border-bottom: 1px solid #ccc;
   `,
 };

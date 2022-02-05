@@ -5,6 +5,9 @@ const theme = {
   colors: {
     primary: "blue",
   },
+  fonts: {
+    default: "Arial"
+  }
 };
 
 // Create theme provider
