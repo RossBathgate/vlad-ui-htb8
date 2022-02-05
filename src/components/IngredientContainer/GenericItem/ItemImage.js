@@ -1,15 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-function TestComponent() {
-    return (
-        <Style.TestDiv>
-            <p>Hello</p>
-        </Style.TestDiv>
-    );
-}
+const ItemImage = (props) => {
+    return <></>;
+};
 
-export default TestComponent;
+export default ItemImage;
 
 const Style = {
     TestDiv: styled.div`

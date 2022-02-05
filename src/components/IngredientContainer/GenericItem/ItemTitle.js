@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const IngredientImage = (props) => {
+const ItemTitle = (props) => {
     return <></>;
 };
 
-export default IngredientImage;
+export default ItemTitle;
 
 const Style = {
     TestDiv: styled.div`

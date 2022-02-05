@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import Nav from "./Nav/Nav";
 
-function TestComponent() {
+const Header = (props) => {
     return (
-        <Style.TestDiv>
-            <p>Hello</p>
-        </Style.TestDiv>
+        <div>
+            <Nav />
+        </div>
     );
-}
+};
 
-export default TestComponent;
+export default Header;
 
 const Style = {
     TestDiv: styled.div`

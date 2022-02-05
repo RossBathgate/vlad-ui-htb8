@@ -1,15 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-function TestComponent() {
-    return (
-        <Style.TestDiv>
-            <p>Hello</p>
-        </Style.TestDiv>
-    );
-}
+const RecommendedRecipes = (props) => {
+    return <></>;
+};
 
-export default TestComponent;
+export default RecommendedRecipes;
 
 const Style = {
     TestDiv: styled.div`

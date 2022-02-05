@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const Search = (props) => {
-    return <></>;
+const RecipeInformation = (props) => {
+    return <div></div>;
 };
 
-export default Search;
+export default RecipeInformation;
 
 const Style = {
     TestDiv: styled.div`
