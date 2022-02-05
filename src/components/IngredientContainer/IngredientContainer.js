@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Ingredient from "./Ingredient";
 import Category from "./Category";
+import constants from "./../../constants";
 
 const IngredientContainer = (props) => {
   // temporary for now:
@@ -39,32 +40,43 @@ const IngredientContainer = (props) => {
       },
     ],
   };
+  const [currentCategory, setCurrentCategory] = useState(null);
+  const currentIngredients =
+    currentCategory &&
+    data.CATEGORIES.find((elem) => elem.id === currentCategory).ingredients;
 
-  const categories = [];
-  let ingredients = [];
+  const categoryClickHandler = (id) => {
+    const category = data.CATEGORIES.find((elem) => elem.id === id);
+    setCurrentCategory(category.id);
+  };
 
-  for (let i = 0; i < data.CATEGORIES.length; i++) {
-    categories.push({
-      title: data.CATEGORIES[i].title,
-      img: data.CATEGORIES[i].image,
-      id: data.CATEGORIES[i].id,
-    });
-  }
-
-  const categoryClickHandler = (title) => {
-    console.log("Item clicked");
+  const ingredientClickHandler = (title) => {
+    console.log("Ingredient clicked");
   };
 
   return (
     <div>
-      {ingredients.map((ingredient) => (
-        <Category
-          key={ingredient.id}
-          title={ingredient.title}
-          img={ingredient.img}
-          onClick={categoryClickHandler}
-        />
-      ))}
+      {currentCategory === null &&
+        data.CATEGORIES.map((category) => (
+          <Category
+            key={category.id}
+            id={category.id}
+            title={category.title}
+            img={category.image}
+            onClick={categoryClickHandler}
+          />
+        ))}
+
+      {currentCategory !== null &&
+        currentIngredients.map((ingredient) => (
+          <Ingredient
+            key={ingredient.id}
+            id={ingredient.id}
+            title={ingredient.title}
+            img={ingredient.img}
+            onClick={ingredientClickHandler}
+          />
+        ))}
     </div>
   );
 };
