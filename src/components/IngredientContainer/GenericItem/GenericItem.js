@@ -1,13 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const Category = (props) => {
+const GenericItem = (props) => {
   return (
-    <GenericItem onClick={props.onClick} title={props.title} img={props.img} />
+    <div onClick={props.onClick}>
+      <p>{props.title}</p>
+      <img src={props.img} />
+    </div>
   );
 };
 
-export default Category;
+export default GenericItem;
 
 const Style = {
   TestDiv: styled.div`
