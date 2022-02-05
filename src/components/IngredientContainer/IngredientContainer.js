@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { breakpoint } from "styled-components-breakpoint";
 import Ingredient from "./Ingredient";
 import Category from "./Category";
 import constants from "./../../constants";
@@ -18,11 +19,11 @@ const IngredientContainer = (props) => {
 
   const currentIngredients =
     currentCategory &&
-    categoryData.CATEGORIES.find((elem) => elem.id === currentCategory)
+    categoryData.Categories.find((elem) => elem.id === currentCategory)
       .ingredients;
 
   const categoryClickHandler = (id) => {
-    const category = categoryData.CATEGORIES.find((elem) => elem.id === id);
+    const category = categoryData.Categories.find((elem) => elem.id === id);
     setCurrentCategory(category.id);
   };
 
@@ -32,28 +33,33 @@ const IngredientContainer = (props) => {
 
   return (
     <div>
-      {currentCategory === null &&
-        categoryData &&
-        categoryData.CATEGORIES.map((category) => (
-          <Category
-            key={category.id}
-            id={category.id}
-            title={category.title}
-            img={category.image}
-            onClick={categoryClickHandler}
-          />
-        ))}
+      {currentCategory === null && categoryData && (
+        <Style.GridContainer>
+          {categoryData.Categories.map((category) => (
+            <Category
+              key={category.id}
+              id={category.id}
+              title={category.title}
+              img={category.image}
+              onClick={categoryClickHandler}
+            />
+          ))}
+        </Style.GridContainer>
+      )}
 
-      {currentCategory !== null &&
-        currentIngredients.map((ingredient) => (
-          <Ingredient
-            key={ingredient.id}
-            id={ingredient.id}
-            title={ingredient.title}
-            img={ingredient.img}
-            onClick={ingredientClickHandler}
-          />
-        ))}
+      {currentCategory !== null && (
+        <Style.GridContainer>
+          {currentIngredients.map((ingredient) => (
+            <Ingredient
+              key={ingredient.id}
+              id={ingredient.id}
+              title={ingredient.title}
+              img={ingredient.image}
+              onClick={ingredientClickHandler}
+            />
+          ))}
+        </Style.GridContainer>
+      )}
     </div>
   );
 };
@@ -61,9 +67,17 @@ const IngredientContainer = (props) => {
 export default IngredientContainer;
 
 const Style = {
-  TestDiv: styled.div`
-    & p {
-      color: ${(props) => props.theme.colors.primary};
-    }
+  GridContainer: styled.div`
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    row-gap: 1rem;
+    column-gap: 1rem;
+    align-items: center;
+    justify-items: center;
+
+    ${breakpoint("tablet")`
+      grid-template-columns: auto auto auto auto;
+    `}
   `,
 };
