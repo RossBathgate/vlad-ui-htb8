@@ -21,6 +21,11 @@ const Style = {
     color: ${props => props.isActive ? "black": "darkgray"};
     transition: border-color 0.1s, color 0.1s;
 
+    &:hover {
+      cursor: pointer;
+      color: black;
+    }
+
     &:focus {
       outline: none;
     }
