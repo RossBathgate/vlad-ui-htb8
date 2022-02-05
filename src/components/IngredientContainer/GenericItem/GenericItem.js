@@ -3,19 +3,26 @@ import styled from "styled-components";
 
 const GenericItem = (props) => {
   return (
-    <div onClick={props.onClick}>
-      <p>{props.title}</p>
+    <Style.GenericItem onClick={props.onClick}>
       <img src={props.img} />
-    </div>
+      <p>{props.title}</p>
+    </Style.GenericItem>
   );
 };
 
 export default GenericItem;
 
 const Style = {
-  TestDiv: styled.div`
-    & p {
-      color: ${(props) => props.theme.colors.primary};
+  GenericItem: styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+
+    & img {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
     }
   `,
 };
