@@ -11,19 +11,22 @@ const IngredientContainer = (props) => {
       {
         title: "VEGETABLES",
         id: 1,
-        image: "https://",
+        image:
+          "https://thumbs.dreamstime.com/z/rainbow-love-heart-background-red-wood-60045149.jpg",
         ingredients: [
           {
             title: "onion",
             id: 100,
-            image: "https://...",
+            image:
+              "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg",
             vegetarian: 1, //1 true, 0 false
             vegan: 1,
           },
           {
             title: "pepper",
             id: 101,
-            image: "https://...",
+            image:
+              "https://www.gettyimages.com/gi-resources/images/500px/983794168.jpg",
             vegetarian: 1,
             vegan: 1,
           },
@@ -32,7 +35,8 @@ const IngredientContainer = (props) => {
       {
         title: "HERBS AND SPICES",
         id: 7,
-        image: "https://",
+        image:
+          "https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         ingredients: [
           { title: "apple", id: 100, image: "https://..." },
           { title: "orange", id: 101, image: "https://..." },
