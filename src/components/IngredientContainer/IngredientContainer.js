@@ -137,6 +137,7 @@ export default IngredientContainer;
 const Style = {
   MainSection: styled.div`
     position: relative;
+    margin-top: 1rem;
   `,
 
   GridContainer: styled.div`

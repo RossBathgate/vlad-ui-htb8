@@ -39,7 +39,8 @@ function App() {
     {
       id: 0,
       title: "My Recipe 1",
-      image: "../placeholder.jpg",
+      image:
+        "https://thumbs.dreamstime.com/b/rainbow-love-heart-background-red-wood-60045149.jpg",
       information: "Some info here...",
       ingredients: "ingredients here",
       method: "method",
@@ -47,7 +48,8 @@ function App() {
     {
       id: 1,
       title: "My Recipe 1",
-      image: "../placeholder.jpg",
+      image:
+        "https://images.unsplash.com/photo-1471879832106-c7ab9e0cee23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80",
       information: "Some info here...",
       ingredients: "ingredients here",
       method: "method",
@@ -55,7 +57,8 @@ function App() {
     {
       id: 2,
       title: "My Recipe 1",
-      image: "../placeholder.jpg",
+      image:
+        "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Zm9jdXN8ZW58MHx8MHx8&w=1000&q=80",
       information: "Some info here...",
       ingredients: "ingredients here",
       method: "method",
