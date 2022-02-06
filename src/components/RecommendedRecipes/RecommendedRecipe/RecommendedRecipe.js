@@ -5,7 +5,14 @@ const RecommendedRecipe = (props) => {
   return (
     <Style.Recipe>
       <Style.RecipeImage bgImage={props.image} />
-      <Style.RecipeDetails>{props.title}</Style.RecipeDetails>
+      <Style.RecipeDetails>
+        <h3>{props.title}</h3>
+        <ul>
+          {props.ingredients.map((ingredient) => {
+            return <li key={ingredient}>{ingredient}</li>;
+          })}
+        </ul>
+      </Style.RecipeDetails>
     </Style.Recipe>
   );
 };
@@ -35,8 +42,20 @@ const Style = {
     display: flex;
     flex-direction: column;
     font-family: ${(props) => props.theme.fonts.default};
-    font-size: 14px;
     padding-left: 0.5rem;
     padding-top: 0.5rem;
+
+    & h3 {
+      font-size: 16px;
+    }
+
+    & ul {
+      font-size: 12px;
+
+      & li {
+        color: gray;
+        list-style-type: none;
+      }
+    }
   `,
 };

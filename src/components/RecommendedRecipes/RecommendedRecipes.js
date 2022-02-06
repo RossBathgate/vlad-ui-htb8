@@ -14,15 +14,16 @@ const RecommendedRecipes = (props) => {
 
   return (
     <Style.RecommendedRecipes>
-      <h3>
+      <Style.Title>
         <span>Recommended Recipes</span>
-      </h3>
+      </Style.Title>
       {recipes &&
         recipes.map((recipe) => (
           <RecommendedRecipe
             key={recipe.id}
             title={recipe.title}
             image={recipe.image}
+            ingredients={recipe.ingredients}
           />
         ))}
       <Style.ShowMoreButton onClick={showRecipesHandler}>
@@ -50,17 +51,17 @@ const Style = {
     flex-direction: column;
     align-items: center;
     padding: 0 1rem;
+  `,
 
-    & h3 {
-      font-family: ${(props) => props.theme.fonts.default};
-      width: 100%;
-      font-size: 20px;
-      margin-bottom: 1.5rem;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    }
+  Title: styled.h3`
+    font-family: ${(props) => props.theme.fonts.default};
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   `,
 
   ShowMoreButton: styled.button`

@@ -12,8 +12,12 @@ const Recipe = (props) => {
       <Style.RecipeDetails isReflected={props.isReflected}>
         <h3>{props.title}</h3>
         <p>{props.information}</p>
-        <p>{props.ingredients}</p>
-        <p>{props.method}</p>
+        <ul>
+          {props.ingredients.map((ingredient) => (
+            <li key={ingredient}>{ingredient}</li>
+          ))}
+        </ul>
+        <button>View more</button>
       </Style.RecipeDetails>
     </Style.Recipe>
   );
@@ -38,6 +42,7 @@ const Style = {
   Recipe: styled.div`
     background-image: url(${(props) => props.bgImage});
     background-size: cover;
+    min-height: fit-content;
     height: 40vh;
     margin-bottom: 1rem;
     display: flex;
@@ -45,7 +50,7 @@ const Style = {
     align-items: ${(props) => props.isReflected && "flex-end"};
     overflow: hidden;
     box-shadow: 0.3px 0.3px 5.3px rgba(0, 0, 0, 0.028),
-    1.1px 1.1px 17.9px rgba(0, 0, 0, 0.042), 5px 5px 80px rgba(0, 0, 0, 0.07);
+      1.1px 1.1px 17.9px rgba(0, 0, 0, 0.042), 5px 5px 80px rgba(0, 0, 0, 0.07);
     border-radius: 4px;
     opacity: 0;
     animation: ${Animations.recipeIntro} 0.3s ease-out
@@ -68,6 +73,10 @@ const Style = {
     font-family: ${(props) => props.theme.fonts.default};
     padding: 0.5rem;
 
+    ${breakpoint("desktop")`
+      padding: 1rem;
+    `}
+
     &::before {
       content: "";
       z-index: 0;
@@ -87,12 +96,48 @@ const Style = {
       margin-top: 0.2rem;
       position: relative;
       z-index: 1;
+      text-align: ${(props) => (props.isReflected ? "right" : "left")};
     }
 
     & p {
       font-size: 12px;
       position: relative;
       z-index: 1;
+    }
+
+    & ul {
+      font-size: 12px;
+      position: relative;
+      z-index: 1;
+
+      & li {
+        color: gray;
+        list-style-type: none;
+        text-align: ${(props) => (props.isReflected ? "right" : "left")};
+      }
+    }
+
+    & button {
+      background-color: white;
+      border: none;
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      padding: 0.5rem;
+      color: gray;
+      border-top: 1px solid rgba(0, 0, 0, 0.15);
+
+      &:hover {
+        cursor: pointer;
+        color: black;
+      }
+
+      &:focus {
+        outline: none;
+      }
     }
   `,
 };
