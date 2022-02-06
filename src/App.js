@@ -46,9 +46,9 @@ function App() {
           </Fragment>
         )}
 
-        {chosenIngredients.map((ingredient) => (
+        {/* {chosenIngredients.map((ingredient) => (
           <p key={ingredient.id}>{ingredient.title}</p> //error with the state probably
-        ))}
+        ))} */}
 
         {currentPage === constants.pages.recipies && <RecipeContainer />}
       </Style.MainContent>
