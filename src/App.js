@@ -19,6 +19,34 @@ function App() {
     { id: 1, title: "My Recipe 2", image: "../placeholder.jpg" },
     { id: 2, title: "My Recipe 3", image: "../placeholder.jpg" },
   ];
+
+  const temporaryRecipies = [
+    {
+      id: 0,
+      title: "My Recipe 1",
+      image: "../placeholder.jpg",
+      information: "Some info here...",
+      ingredients: "ingredients here",
+      method: "method",
+    },
+    {
+      id: 1,
+      title: "My Recipe 1",
+      image: "../placeholder.jpg",
+      information: "Some info here...",
+      ingredients: "ingredients here",
+      method: "method",
+    },
+    {
+      id: 2,
+      title: "My Recipe 1",
+      image: "../placeholder.jpg",
+      information: "Some info here...",
+      ingredients: "ingredients here",
+      method: "method",
+    },
+  ];
+
   // api/getRepices
   // call this api and use the chosenIngredients to form the request string.
 
@@ -50,7 +78,9 @@ function App() {
           <p key={ingredient.id}>{ingredient.title}</p> //error with the state probably
         ))}
 
-        {currentPage === constants.pages.recipies && <RecipeContainer />}
+        {currentPage === constants.pages.recipies && (
+          <RecipeContainer recipes={temporaryRecipies} /> //DO NOT USE THE TEMP..  need to do some processing here from api call...
+        )}
       </Style.MainContent>
     </Style.MainContainer>
   );
