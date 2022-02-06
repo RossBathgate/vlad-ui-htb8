@@ -6,7 +6,11 @@ import Nav from "./Nav/Nav";
 const Header = (props) => {
   return (
     <Style.Header>
-      <Nav onPageChange={props.onPageChange} currentPage={props.currentPage} />
+      <Nav
+        onPageChange={props.onPageChange}
+        currentPage={props.currentPage}
+        isSecondPageDisabled={props.isSecondPageDisabled}
+      />
     </Style.Header>
   );
 };

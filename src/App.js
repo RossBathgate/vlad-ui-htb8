@@ -24,7 +24,6 @@ function App() {
       const res = await axios.get(constants.backend.getRecipes, {
         params: urlParams,
       });
-      console.log(res.data);
       if (res) {
         setRecipes(res.data);
       }
@@ -36,10 +35,13 @@ function App() {
   // call this api and use the chosenIngredients to form the request string.
 
   const ingredientSelectedHandler = (ingredient) => {
-    setChosenIngredients((prev) => [
-      ...prev,
-      { id: ingredient.id, title: ingredient.title },
-    ]);
+    setChosenIngredients((prev) => {
+      if (prev.some((elem) => elem.id === ingredient.id)) {
+        return prev;
+      } else {
+        return [...prev, { id: ingredient.id, title: ingredient.title }];
+      }
+    });
 
     // need to update the recommended recipies here
   };
@@ -53,7 +55,11 @@ function App() {
   return (
     <Style.MainContainer>
       <Style.MainContent>
-        <Header currentPage={currentPage} onPageChange={setCurrentPage} />
+        <Header
+          currentPage={currentPage}
+          onPageChange={setCurrentPage}
+          isSecondPageDisabled={recipes === null || recipes.length === 0}
+        />
 
         {currentPage === constants.pages.ingredients && (
           <Fragment>
@@ -66,7 +72,7 @@ function App() {
                 onRemoveIngredient={removeIngredientHandler}
               />
             )}
-            {recipes !== null && (
+            {recipes !== null && recipes.length > 0 && (
               <RecommendedRecipes
                 recipes={recipes}
                 onPageChange={setCurrentPage}

@@ -21,8 +21,9 @@ const Nav = (props) => {
       />
       <HeaderButton
         onClick={recipesClickHandler}
-        text={"Recipes"}
+        text={"All Recipes"}
         isActive={props.currentPage === constants.pages.recipies}
+        disabled={props.isSecondPageDisabled}
       />
       <Style.ActiveIndicator currentPos={props.currentPage} />
     </Style.Nav>
