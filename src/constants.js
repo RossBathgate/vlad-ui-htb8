@@ -3,7 +3,8 @@ const constants = {
   backend: {
     getIngredients:
       "https://htb-vlad-backend.herokuapp.com/api/getAllIngredients",
-    // getIngredients: "http://localhost:5000/api/getAllIngredients",
+    getRecipes:
+      "http://htb-vlad-backend.herokuapp.com/api/getRecipesFromIngredients",
   },
 };
 

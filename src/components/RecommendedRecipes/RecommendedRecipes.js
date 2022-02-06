@@ -5,7 +5,8 @@ import RecommendedRecipe from "./RecommendedRecipe/RecommendedRecipe";
 
 const RecommendedRecipes = (props) => {
   const numberOfRecipesToDisplay = 2;
-  const recipes = props.recipes.slice(0, numberOfRecipesToDisplay);
+  const recipes =
+    props.recipes && props.recipes.slice(0, numberOfRecipesToDisplay);
 
   const showRecipesHandler = () => {
     props.onPageChange(constants.pages.recipies);

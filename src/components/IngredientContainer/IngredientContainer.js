@@ -14,8 +14,6 @@ const IngredientContainer = (props) => {
   const ingredientsContainerRef = useRef();
   const mainSectionRef = useRef();
 
-  console.log(categoriesContainerRef);
-
   useEffect(() => {
     setTimeout(() => {
       if (mainSectionRef.current) {
