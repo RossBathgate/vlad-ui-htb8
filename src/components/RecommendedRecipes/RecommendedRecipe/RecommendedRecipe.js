@@ -47,10 +47,14 @@ const Style = {
 
     & h3 {
       font-size: 16px;
+      padding-bottom: 0.5rem;
     }
 
     & ul {
       font-size: 12px;
+      display: grid;
+      grid-template-columns: auto auto;
+      column-gap: 1rem;
 
       & li {
         color: gray;

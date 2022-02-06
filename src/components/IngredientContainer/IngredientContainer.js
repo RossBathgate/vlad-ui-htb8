@@ -5,7 +5,7 @@ import Ingredient from "./Ingredient";
 import Category from "./Category";
 import constants from "./../../constants";
 import axios from "axios";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 
 const IngredientContainer = (props) => {
   const [currentCategory, setCurrentCategory] = useState(null);
@@ -13,6 +13,8 @@ const IngredientContainer = (props) => {
   const categoriesContainerRef = useRef();
   const ingredientsContainerRef = useRef();
   const mainSectionRef = useRef();
+  const searchEnabled =
+    props.searchKeyword && props.searchKeyword.trim().length > 0;
 
   useEffect(() => {
     setTimeout(() => {
@@ -37,7 +39,7 @@ const IngredientContainer = (props) => {
           mainSectionRef.current.style.height = max + "px";
         }
       }
-    }, 100);
+    }, 200);
   }, [categoriesContainerRef.current, ingredientsContainerRef.current]);
 
   useEffect(() => {
@@ -48,10 +50,23 @@ const IngredientContainer = (props) => {
     getIngredients();
   }, []);
 
-  const currentIngredients =
-    currentCategory &&
-    categoryData.Categories.find((elem) => elem.id === currentCategory)
-      .ingredients;
+  // Compute current ingredients
+  let currentIngredients;
+  if (props.searchKeyword && props.searchKeyword.trim().length > 0) {
+    const joinedData = categoryData.Categories.map(
+      (elem) => elem.ingredients
+    ).reduce((acc, val) => {
+      return [...acc, ...val];
+    }, []);
+    currentIngredients = joinedData.filter((elem) =>
+      elem.title.includes(props.searchKeyword.trim())
+    );
+  } else {
+    currentIngredients =
+      currentCategory &&
+      categoryData.Categories.find((elem) => elem.id === currentCategory)
+        .ingredients;
+  }
 
   const categoryClickHandler = (id) => {
     const category = categoryData.Categories.find((elem) => elem.id === id);
@@ -60,6 +75,10 @@ const IngredientContainer = (props) => {
 
   const ingredientClickHandler = (id) => {
     setCurrentCategory(null);
+    if (searchEnabled) {
+      props.onClearSearch(null);
+    }
+
     const selectedIngredient = currentIngredients.find(
       (elem) => elem.id === id
     );
@@ -74,7 +93,7 @@ const IngredientContainer = (props) => {
     <Style.MainSection ref={mainSectionRef}>
       {!!categoryData && (
         <CSSTransition
-          in={currentCategory === null}
+          in={currentCategory === null && !searchEnabled}
           timeout={600}
           classNames="categories-container"
           nodeRef={categoriesContainerRef}
@@ -98,7 +117,7 @@ const IngredientContainer = (props) => {
       )}
 
       <CSSTransition
-        in={currentCategory !== null}
+        in={currentCategory !== null || !!searchEnabled}
         timeout={600}
         classNames="ingredients-container"
         nodeRef={ingredientsContainerRef}

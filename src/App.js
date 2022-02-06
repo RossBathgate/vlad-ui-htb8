@@ -14,6 +14,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(constants.pages.ingredients);
   const [recipes, setRecipes] = useState(null);
   const [chosenIngredients, setChosenIngredients] = useState([]);
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   useEffect(() => {
     const getAPIRecipes = async () => {
@@ -59,12 +60,16 @@ function App() {
           currentPage={currentPage}
           onPageChange={setCurrentPage}
           isSecondPageDisabled={recipes === null || recipes.length === 0}
+          onSearch={setSearchKeyword}
+          searchVal={searchKeyword}
         />
 
         {currentPage === constants.pages.ingredients && (
           <Fragment>
             <IngredientContainer
               onIngredientSelected={ingredientSelectedHandler}
+              searchKeyword={searchKeyword}
+              onClearSearch={() => setSearchKeyword("")}
             />
             {chosenIngredients.length > 0 && (
               <CurrentIngredients

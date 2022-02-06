@@ -26,9 +26,9 @@ function CurrentIngredients(props) {
       <Style.ZigZag opposite />
       <Style.Row>
         {props.chosenIngredients &&
-          splitIngredients.map((ingredientArr) => {
+          splitIngredients.map((ingredientArr, index) => {
             return (
-              <Style.Column>
+              <Style.Column key={index}>
                 {ingredientArr.map((ingredient) => {
                   const clickHandler = () => {
                     props.onRemoveIngredient(ingredient.id);

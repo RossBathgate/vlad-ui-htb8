@@ -52,6 +52,7 @@ let config = {
   plugins: [
     new CopyPlugin({
       patterns: [{ from: "./public/index.html", to: "./index.html" }],
+      patterns: [{ from: "./public/res/*", to: "./res/*" }],
     }),
   ],
 };
