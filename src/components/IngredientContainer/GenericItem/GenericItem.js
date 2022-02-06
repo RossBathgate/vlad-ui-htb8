@@ -29,14 +29,16 @@ const Style = {
     }
 
     & img {
-      width: 7rem;
-      height: 7rem;
+      width: 5rem;
+      height: 5rem;
       border-radius: 50%;
       transition: filter 0.2s, transform 0.2s;
       margin-bottom: 0.5rem;
 
       ${breakpoint("desktop")`
         filter: grayscale(1);
+        width: 7rem;
+        height: 7rem;
       `}
     }
 
