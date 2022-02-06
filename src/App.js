@@ -22,16 +22,21 @@ function App() {
   // call this api and use the chosenIngredients to form the request string.
 
   const ingredientSelectedHandler = (ingredient) => {
-    (prevState) => {
-      const newState = [
-        ...prevState,
-        {
-          id: ingredient.id,
-          title: ingredient.title,
-        },
-      ];
-      setChosenIngredients(newState);
-    };
+    console.log("Adding ingredient to state...");
+    setChosenIngredients((prev) => [
+      ...prev,
+      { id: ingredient.id, title: ingredient.title },
+    ]);
+
+    // setChosenIngredients((prevState) => {
+    //   [
+    //     ...prevState,
+    //     {
+    //       id: ingredient.id,
+    //       title: ingredient.title,
+    //     },
+    //   ];
+    // });
   };
 
   return (
@@ -49,6 +54,10 @@ function App() {
             {/* (ABOVE) REPLACE tempR..R.. with the state variable*/}
           </div>
         )}
+
+        {chosenIngredients.map((ingredient) => (
+          <p>{ingredient.title}dd</p> //error with the state probably
+        ))}
 
         {currentPage === constants.pages.recipies && <RecipeContainer />}
       </Style.MainContent>
