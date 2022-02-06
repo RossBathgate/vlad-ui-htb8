@@ -9,6 +9,30 @@ import RecipeContainer from "./components/RecipeContainer/RecipeContainer";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(constants.pages.ingredients);
+  const [recommendedRecipies, setRecommendedRecipies] = useState(null);
+  const [chosenIngredients, setChosenIngredients] = useState([]);
+
+  //TEMP
+  const temporaryRecommendedRecipies = [
+    { id: 0, title: "My Recipe 1", image: "img_source" },
+    { id: 1, title: "My Recipe 2", image: "img_source" },
+    { id: 2, title: "My Recipe 3", image: "img_source" },
+  ];
+  // api/getRepices
+  // call this api and use the chosenIngredients to form the request string.
+
+  const ingredientSelectedHandler = (ingredient) => {
+    (prevState) => {
+      const newState = [
+        ...prevState,
+        {
+          id: ingredient.id,
+          title: ingredient.title,
+        },
+      ];
+      setChosenIngredients(newState);
+    };
+  };
 
   return (
     <Style.MainContainer>
@@ -17,8 +41,12 @@ function App() {
 
         {currentPage === constants.pages.ingredients && (
           <div>
-            <IngredientContainer />
-            <RecommendedRecipes />
+            {/* need to get the recomm. recipe data from here \/ */}
+            <IngredientContainer
+              onIngredientSelected={ingredientSelectedHandler}
+            />
+            <RecommendedRecipes recipes={temporaryRecommendedRecipies} />{" "}
+            {/* (ABOVE) REPLACE tempR..R.. with the state variable*/}
           </div>
         )}
 
