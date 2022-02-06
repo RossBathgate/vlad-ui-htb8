@@ -37,28 +37,30 @@ const IngredientContainer = (props) => {
 
   return (
     <Style.MainSection>
-      <CSSTransition
-        in={currentCategory === null && !!categoryData}
-        timeout={600}
-        classNames="categories-container"
-        nodeRef={categoriesContainerRef}
-        mountOnEnter
-        unmountOnExit
-        appear={true}
-      >
-        <Style.GridContainer ref={categoriesContainerRef}>
-          {categoryData &&
-            categoryData.Categories.map((category) => (
-              <Category
-                key={category.id}
-                id={category.id}
-                title={category.title}
-                img={category.image}
-                onClick={categoryClickHandler}
-              />
-            ))}
-        </Style.GridContainer>
-      </CSSTransition>
+      {!!categoryData && (
+        <CSSTransition
+          in={currentCategory === null}
+          timeout={600}
+          classNames="categories-container"
+          nodeRef={categoriesContainerRef}
+          mountOnEnter
+          unmountOnExit
+          appear={true}
+        >
+          <Style.GridContainer ref={categoriesContainerRef}>
+            {categoryData &&
+              categoryData.Categories.map((category) => (
+                <Category
+                  key={category.id}
+                  id={category.id}
+                  title={category.title}
+                  img={category.image}
+                  onClick={categoryClickHandler}
+                />
+              ))}
+          </Style.GridContainer>
+        </CSSTransition>
+      )}
 
       <CSSTransition
         in={currentCategory !== null}
@@ -110,10 +112,11 @@ const Style = {
 
     &.categories-container-appear-active {
       opacity: 1;
+      transition: all 0.4s;
     }
 
     &.categories-container-enter {
-      transform: scale(2, 2);
+      transform: scale(1.5, 1.5);
       opacity: 0;
     }
     &.categories-container-enter-active {
@@ -129,7 +132,7 @@ const Style = {
       opacity: 1;
     }
     &.categories-container-exit-active {
-      transform: scale(2, 2);
+      transform: scale(1.5, 1.5);
       opacity: 0;
       transition: all 0.4s;
     }
