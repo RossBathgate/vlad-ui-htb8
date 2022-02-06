@@ -203,6 +203,7 @@ const Style = {
 
     ${breakpoint("tablet")`
       grid-template-columns: auto auto auto auto;
+      padding: 2.5rem;
     `}
   `,
 };

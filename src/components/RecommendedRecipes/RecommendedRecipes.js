@@ -44,7 +44,7 @@ const Style = {
   RecommendedRecipes: styled.div`
     margin-top: 2rem;
     opacity: 0;
-    animation: ${Animations.opacityIntro} 0.4s ease-out 0.4s forwards;
+    animation: ${Animations.opacityIntro} 0.4s ease-out 0.6s forwards;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -7,10 +7,16 @@ import IngredientContainer from "./components/IngredientContainer/IngredientCont
 import RecommendedRecipes from "./components/RecommendedRecipes/RecommendedRecipes";
 import RecipeContainer from "./components/RecipeContainer/RecipeContainer";
 import { Fragment } from "react/cjs/react.production.min";
+import CurrentIngredients from "./components/CurrentIngredients/CurrentIngredients";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(constants.pages.ingredients);
   const [recommendedRecipies, setRecommendedRecipies] = useState(null);
+  // const [chosenIngredients, setChosenIngredients] = useState([
+  //   { id: 2, title: "hey" },
+  //   { id: 3, title: "parsley" },
+  //   { id: 4, title: "red turnip" },
+  // ]);
   const [chosenIngredients, setChosenIngredients] = useState([]);
 
   //TEMP
@@ -69,11 +75,16 @@ function App() {
   // call this api and use the chosenIngredients to form the request string.
 
   const ingredientSelectedHandler = (ingredient) => {
-    console.log("Adding ingredient to state...");
     setChosenIngredients((prev) => [
       ...prev,
       { id: ingredient.id, title: ingredient.title },
     ]);
+  };
+
+  const removeIngredientHandler = (ingredientID) => {
+    setChosenIngredients((prev) =>
+      prev.filter((elem) => elem.id !== ingredientID)
+    );
   };
 
   return (
@@ -87,6 +98,10 @@ function App() {
             <IngredientContainer
               onIngredientSelected={ingredientSelectedHandler}
             />
+            <CurrentIngredients
+              chosenIngredients={chosenIngredients}
+              onRemoveIngredient={removeIngredientHandler}
+            />
             <RecommendedRecipes
               recipes={temporaryRecommendedRecipies}
               onPageChange={setCurrentPage}
@@ -94,10 +109,6 @@ function App() {
             {/* (ABOVE) REPLACE tempR..R.. with the state variable*/}
           </Fragment>
         )}
-
-        {chosenIngredients.map((ingredient) => (
-          <p key={ingredient.id}>{ingredient.title}</p> //error with the state probably
-        ))}
 
         {currentPage === constants.pages.recipies && (
           <RecipeContainer recipes={temporaryRecipies} /> //DO NOT USE THE TEMP..  need to do some processing here from api call...
