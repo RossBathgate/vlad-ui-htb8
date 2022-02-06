@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { breakpoint } from "styled-components-breakpoint";
 import constants from "../../../constants";
 import SettingsModal from "./SettingsModal";
 
@@ -30,9 +31,11 @@ function Head(props) {
           />
           <img src="/res/search-var-solid.svg" />
         </Style.SearchBar>
-        <Style.SettingsButton onClick={onSettingsClickHandler}>
-          <img src="/res/settings-solid.svg" />
-        </Style.SettingsButton>
+        {props.currentPage !== constants.pages.recipies && (
+          <Style.SettingsButton onClick={onSettingsClickHandler}>
+            <img src="/res/settings-solid.svg" />
+          </Style.SettingsButton>
+        )}
         {modalShown && (
           <SettingsModal
             onSetDiet={props.onSetDiet}
@@ -75,10 +78,15 @@ const Style = {
     padding: 0 1rem;
     height: 2.4rem;
     opacity: ${(props) => (props.isDisabled ? "0" : "1")};
-   
+
     & input {
       border: none;
       background-color: transparent;
+      width: 8rem;
+
+      ${breakpoint("tablet")`
+        width: 10rem;
+      `}
 
       &:focus {
         outline: none;
