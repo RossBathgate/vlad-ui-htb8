@@ -15,9 +15,9 @@ function App() {
 
   //TEMP
   const temporaryRecommendedRecipies = [
-    { id: 0, title: "My Recipe 1", image: "img_source" },
-    { id: 1, title: "My Recipe 2", image: "img_source" },
-    { id: 2, title: "My Recipe 3", image: "img_source" },
+    { id: 0, title: "My Recipe 1", image: "../placeholder.jpg" },
+    { id: 1, title: "My Recipe 2", image: "../placeholder.jpg" },
+    { id: 2, title: "My Recipe 3", image: "../placeholder.jpg" },
   ];
   // api/getRepices
   // call this api and use the chosenIngredients to form the request string.
@@ -46,9 +46,9 @@ function App() {
           </Fragment>
         )}
 
-        {/* {chosenIngredients.map((ingredient) => (
+        {chosenIngredients.map((ingredient) => (
           <p key={ingredient.id}>{ingredient.title}</p> //error with the state probably
-        ))} */}
+        ))}
 
         {currentPage === constants.pages.recipies && <RecipeContainer />}
       </Style.MainContent>
