@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+import styled, { keyframes } from "styled-components";
 import RecommendedRecipe from "./RecommendedRecipe/RecommendedRecipe";
 
 const RecommendedRecipes = (props) => {
@@ -7,7 +7,7 @@ const RecommendedRecipes = (props) => {
   const recipes = props.recipes.slice(0, numberOfRecipesToDisplay);
 
   return (
-    <div>
+    <Style.RecommendedRecipes>
       {recipes &&
         recipes.map((recipe) => (
           <RecommendedRecipe
@@ -16,16 +16,22 @@ const RecommendedRecipes = (props) => {
             image={recipe.image}
           />
         ))}
-    </div>
+    </Style.RecommendedRecipes>
   );
 };
 
 export default RecommendedRecipes;
 
+const Animations = {
+  opacityIntro: keyframes`
+    from {opacity: 0}
+    to {opacity: 1}
+  `,
+};
+
 const Style = {
-  TestDiv: styled.div`
-    & p {
-      color: ${(props) => props.theme.colors.primary};
-    }
+  RecommendedRecipes: styled.div`
+    opacity: 0;
+    animation: ${Animations.opacityIntro} 0.4s ease-out 0.4s forwards;
   `,
 };

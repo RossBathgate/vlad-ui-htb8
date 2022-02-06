@@ -12,6 +12,18 @@ const IngredientContainer = (props) => {
   const [categoryData, setCategoryData] = useState(null);
   const categoriesContainerRef = useRef();
   const ingredientsContainerRef = useRef();
+  const mainSectionRef = useRef();
+
+  console.log(categoriesContainerRef);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (mainSectionRef.current && categoriesContainerRef.current) {
+        mainSectionRef.current.style.height =
+          categoriesContainerRef.current.offsetHeight + "px";
+      }
+    }, 100);
+  }, [categoriesContainerRef.current]);
 
   useEffect(() => {
     const getIngredients = async () => {
@@ -40,7 +52,7 @@ const IngredientContainer = (props) => {
   };
 
   return (
-    <Style.MainSection>
+    <Style.MainSection ref={mainSectionRef}>
       {!!categoryData && (
         <CSSTransition
           in={currentCategory === null}
@@ -104,11 +116,10 @@ const Style = {
     grid-template-columns: auto auto auto;
     row-gap: 1rem;
     column-gap: 1rem;
+    position: absolute;
     align-items: center;
     justify-items: center;
-    position: absolute;
     width: 100%;
-    height: 100%;
 
     &.categories-container-appear {
       opacity: 0;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { breakpoint } from "styled-components-breakpoint";
 import constants from "./constants";
@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import IngredientContainer from "./components/IngredientContainer/IngredientContainer";
 import RecommendedRecipes from "./components/RecommendedRecipes/RecommendedRecipes";
 import RecipeContainer from "./components/RecipeContainer/RecipeContainer";
+import { Fragment } from "react/cjs/react.production.min";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(constants.pages.ingredients);
@@ -45,14 +46,14 @@ function App() {
         <Header currentPage={currentPage} onPageChange={setCurrentPage} />
 
         {currentPage === constants.pages.ingredients && (
-          <div>
+          <Fragment>
             {/* need to get the recomm. recipe data from here \/ */}
             <IngredientContainer
               onIngredientSelected={ingredientSelectedHandler}
             />
-            <RecommendedRecipes recipes={temporaryRecommendedRecipies} />{" "}
+            <RecommendedRecipes recipes={temporaryRecommendedRecipies} />
             {/* (ABOVE) REPLACE tempR..R.. with the state variable*/}
-          </div>
+          </Fragment>
         )}
 
         {chosenIngredients.map((ingredient) => (
