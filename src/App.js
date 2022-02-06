@@ -15,6 +15,7 @@ function App() {
   const [recipes, setRecipes] = useState(null);
   const [chosenIngredients, setChosenIngredients] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
+  const [diet, setDiet] = useState("");
 
   useEffect(() => {
     const getAPIRecipes = async () => {
@@ -22,6 +23,7 @@ function App() {
       chosenIngredients.forEach((ingredient) => {
         urlParams.append("ingredients", ingredient.title);
       });
+      urlParams.set("diet", diet);
       const res = await axios.get(constants.backend.getRecipes, {
         params: urlParams,
       });
@@ -62,6 +64,8 @@ function App() {
           isSecondPageDisabled={recipes === null || recipes.length === 0}
           onSearch={setSearchKeyword}
           searchVal={searchKeyword}
+          onSetDiet={setDiet}
+          diet={diet}
         />
 
         {currentPage === constants.pages.ingredients && (

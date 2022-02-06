@@ -7,7 +7,13 @@ import Nav from "./Nav/Nav";
 const Header = (props) => {
   return (
     <Style.Header>
-      <Head onSearch={props.onSearch} searchVal={props.searchVal} />
+      <Head
+        onSearch={props.onSearch}
+        searchVal={props.searchVal}
+        onSetDiet={props.onSetDiet}
+        currentPage={props.currentPage}
+        diet={props.diet}
+      />
       <Nav
         onPageChange={props.onPageChange}
         currentPage={props.currentPage}

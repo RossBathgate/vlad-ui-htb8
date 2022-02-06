@@ -6,7 +6,7 @@ const theme = {
     primary: "blue",
   },
   fonts: {
-    default: "Roboto",
+    default: "Roboto, sans-serif",
   },
   breakpoints: {
     mobile: 0,

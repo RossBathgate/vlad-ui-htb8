@@ -28,17 +28,6 @@ let config = {
           },
         ],
       },
-      {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: "svg-url-loader",
-            options: {
-              limit: 25000,
-            },
-          },
-        ],
-      },
     ],
   },
 
@@ -52,7 +41,7 @@ let config = {
   plugins: [
     new CopyPlugin({
       patterns: [{ from: "./public/index.html", to: "./index.html" }],
-      patterns: [{ from: "./public/res/*", to: "./res/*" }],
+      patterns: [{ from: "./public/res", to: "./res" }],
     }),
   ],
 };

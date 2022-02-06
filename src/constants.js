@@ -4,7 +4,7 @@ const constants = {
     getIngredients:
       "https://htb-vlad-backend.herokuapp.com/api/getAllIngredients",
     getRecipes:
-      "http://htb-vlad-backend.herokuapp.com/api/getRecipesFromIngredients",
+      "https://htb-vlad-backend.herokuapp.com/api/getRecipesFromIngredients",
   },
 };
 
