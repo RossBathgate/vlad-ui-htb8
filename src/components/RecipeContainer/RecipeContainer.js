@@ -1,16 +1,25 @@
 import React from "react";
 import styled from "styled-components";
+import Recipe from "./Recipe/Recipe";
 
 const RecipeContainer = (props) => {
-  return <div>Recipes</div>;
+  const recipes = props.recipes;
+
+  return (
+    <div>
+      {recipes &&
+        recipes.map((recipe) => (
+          <Recipe
+            key={recipe.id}
+            image={recipe.image}
+            title={recipe.title}
+            information={recipe.information}
+            ingredients={recipe.ingredients}
+            method={recipe.method}
+          />
+        ))}
+    </div>
+  );
 };
 
 export default RecipeContainer;
-
-const Style = {
-  TestDiv: styled.div`
-    & p {
-      color: ${(props) => props.theme.colors.primary};
-    }
-  `,
-};
