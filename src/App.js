@@ -15,9 +15,24 @@ function App() {
 
   //TEMP
   const temporaryRecommendedRecipies = [
-    { id: 0, title: "My Recipe 1", image: "../placeholder.jpg" },
-    { id: 1, title: "My Recipe 2", image: "../placeholder.jpg" },
-    { id: 2, title: "My Recipe 3", image: "../placeholder.jpg" },
+    {
+      id: 0,
+      title: "My Recipe 1",
+      image:
+        "https://thumbs.dreamstime.com/b/rainbow-love-heart-background-red-wood-60045149.jpg",
+    },
+    {
+      id: 1,
+      title: "My Recipe 2",
+      image:
+        "https://thumbs.dreamstime.com/b/rainbow-love-heart-background-red-wood-60045149.jpg",
+    },
+    {
+      id: 2,
+      title: "My Recipe 3",
+      image:
+        "https://thumbs.dreamstime.com/b/rainbow-love-heart-background-red-wood-60045149.jpg",
+    },
   ];
   // api/getRepices
   // call this api and use the chosenIngredients to form the request string.

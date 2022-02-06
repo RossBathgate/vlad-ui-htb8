@@ -3,20 +3,27 @@ import styled from "styled-components";
 
 const RecommendedRecipe = (props) => {
   return (
-    <div>
-      {/* align image to left, title to right */}
-      <img src={props.image} />
+    <Style.Recipe>
+      <Style.RecipeImage bgImage={props.image} />
       <p>{props.title}</p>
-    </div>
+    </Style.Recipe>
   );
 };
 
 export default RecommendedRecipe;
 
 const Style = {
-  TestDiv: styled.div`
-    & p {
-      color: ${(props) => props.theme.colors.primary};
+  Recipe: styled.div`
+    width: 20vh;
+
+    & img {
     }
+  `,
+
+  RecipeImage: styled.div`
+    background-image: url(${(props) => props.bgImage});
+    background-size: cover;
+    width: 20vh;
+    height: 20vh;
   `,
 };

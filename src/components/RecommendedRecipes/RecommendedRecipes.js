@@ -8,6 +8,7 @@ const RecommendedRecipes = (props) => {
 
   return (
     <Style.RecommendedRecipes>
+      <h3>Recommended Recipes</h3>
       {recipes &&
         recipes.map((recipe) => (
           <RecommendedRecipe
@@ -33,5 +34,16 @@ const Style = {
   RecommendedRecipes: styled.div`
     opacity: 0;
     animation: ${Animations.opacityIntro} 0.4s ease-out 0.4s forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & h3 {
+      font-family: ${(props) => props.theme.fonts.default};
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      margin-bottom: 0.6rem;
+    }
   `,
 };
