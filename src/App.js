@@ -28,16 +28,6 @@ function App() {
       ...prev,
       { id: ingredient.id, title: ingredient.title },
     ]);
-
-    // setChosenIngredients((prevState) => {
-    //   [
-    //     ...prevState,
-    //     {
-    //       id: ingredient.id,
-    //       title: ingredient.title,
-    //     },
-    //   ];
-    // });
   };
 
   return (
@@ -57,7 +47,7 @@ function App() {
         )}
 
         {chosenIngredients.map((ingredient) => (
-          <p>{ingredient.title}dd</p> //error with the state probably
+          <p key={ingredient.id}>{ingredient.title}</p> //error with the state probably
         ))}
 
         {currentPage === constants.pages.recipies && <RecipeContainer />}
