@@ -71,6 +71,8 @@ function App() {
       ...prev,
       { id: ingredient.id, title: ingredient.title },
     ]);
+
+    // need to update the recommended recipies here
   };
 
   return (
@@ -80,7 +82,6 @@ function App() {
 
         {currentPage === constants.pages.ingredients && (
           <Fragment>
-            {/* need to get the recomm. recipe data from here \/ */}
             <IngredientContainer
               onIngredientSelected={ingredientSelectedHandler}
             />
