@@ -84,7 +84,10 @@ function App() {
             <IngredientContainer
               onIngredientSelected={ingredientSelectedHandler}
             />
-            <RecommendedRecipes recipes={temporaryRecommendedRecipies} />
+            <RecommendedRecipes
+              recipes={temporaryRecommendedRecipies}
+              onPageChange={setCurrentPage}
+            />
             {/* (ABOVE) REPLACE tempR..R.. with the state variable*/}
           </Fragment>
         )}

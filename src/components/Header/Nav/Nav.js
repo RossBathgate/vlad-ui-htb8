@@ -36,6 +36,7 @@ const Style = {
     display: flex;
     flex-direction: row;
     position: relative;
+    font-size: 14px;
   `,
 
   ActiveIndicator: styled.div`
@@ -44,7 +45,7 @@ const Style = {
     background-color: black;
     width: 50%;
     bottom: 0;
-    left: ${props => props.currentPos * 50}%;
+    left: ${(props) => props.currentPos * 50}%;
     transition: left 0.2s;
   `,
 };

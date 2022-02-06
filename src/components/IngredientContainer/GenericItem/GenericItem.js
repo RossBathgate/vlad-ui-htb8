@@ -26,6 +26,7 @@ const Style = {
       color: gray;
       font-weight: bold;
       transition: color 0.2s;
+      font-size: 14px;
     }
 
     & img {
