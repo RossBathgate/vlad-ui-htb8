@@ -40,6 +40,8 @@ function App() {
       ...prev,
       { id: ingredient.id, title: ingredient.title },
     ]);
+
+    // need to update the recommended recipies here
   };
 
   const removeIngredientHandler = (ingredientID) => {
