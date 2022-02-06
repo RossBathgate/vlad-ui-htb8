@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
+import constants from "../../constants";
 import RecommendedRecipe from "./RecommendedRecipe/RecommendedRecipe";
 
 const RecommendedRecipes = (props) => {
   const numberOfRecipesToDisplay = 2;
   const recipes = props.recipes.slice(0, numberOfRecipesToDisplay);
 
+  const showRecipesHandler = () => {
+    props.onPageChange(constants.pages.recipies);
+  };
+
   return (
     <Style.RecommendedRecipes>
-      <h3>Recommended Recipes</h3>
+      <h3>
+        <span>Recommended Recipes</span>
+      </h3>
       {recipes &&
         recipes.map((recipe) => (
           <RecommendedRecipe
@@ -17,6 +24,9 @@ const RecommendedRecipes = (props) => {
             image={recipe.image}
           />
         ))}
+      <Style.ShowMoreButton onClick={showRecipesHandler}>
+        Show all recipes
+      </Style.ShowMoreButton>
     </Style.RecommendedRecipes>
   );
 };
@@ -32,18 +42,43 @@ const Animations = {
 
 const Style = {
   RecommendedRecipes: styled.div`
+    margin-top: 2rem;
     opacity: 0;
-    animation: ${Animations.opacityIntro} 0.4s ease-out 0.4s forwards;
+    animation: ${Animations.opacityIntro} 0.4s ease-out 0.6s forwards;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0 1rem;
 
     & h3 {
       font-family: ${(props) => props.theme.fonts.default};
       width: 100%;
-      text-align: center;
-      font-size: 14px;
-      margin-bottom: 0.6rem;
+      font-size: 20px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+  `,
+
+  ShowMoreButton: styled.button`
+    background-color: transparent;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    font-family: ${(props) => props.theme.fonts.default};
+    font-size: 18px;
+    color: gray;
+    border: none;
+    transition: color 0.2s;
+
+    &:hover {
+      cursor: pointer;
+      color: black;
+    }
+
+    &:focus {
+      outline: none;
     }
   `,
 };

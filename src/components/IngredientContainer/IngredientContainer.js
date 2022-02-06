@@ -135,6 +135,7 @@ export default IngredientContainer;
 const Style = {
   MainSection: styled.div`
     position: relative;
+    margin-top: 1rem;
   `,
 
   GridContainer: styled.div`
@@ -200,6 +201,7 @@ const Style = {
 
     ${breakpoint("tablet")`
       grid-template-columns: auto auto auto auto;
+      padding: 2.5rem;
     `}
   `,
 };
