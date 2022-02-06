@@ -8,6 +8,7 @@ const Ingredient = (props) => {
       onClick={() => props.onClick(props.id)}
       title={props.title}
       img={props.img}
+      isCancel={props.isCancel}
     />
   );
 };

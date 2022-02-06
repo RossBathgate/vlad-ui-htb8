@@ -19,7 +19,10 @@ const IngredientContainer = (props) => {
   useEffect(() => {
     setTimeout(() => {
       if (mainSectionRef.current) {
-        if (categoriesContainerRef.current && !ingredientsContainerRef.current) {
+        if (
+          categoriesContainerRef.current &&
+          !ingredientsContainerRef.current
+        ) {
           mainSectionRef.current.style.height =
             categoriesContainerRef.current.offsetHeight + "px";
         } else if (
@@ -63,6 +66,10 @@ const IngredientContainer = (props) => {
       (elem) => elem.id === id
     );
     props.onIngredientSelected(selectedIngredient);
+  };
+
+  const cancelClickHandler = () => {
+    setCurrentCategory(null);
   };
 
   return (
@@ -111,6 +118,14 @@ const IngredientContainer = (props) => {
                 onClick={ingredientClickHandler}
               />
             ))}
+          {currentCategory !== null && (
+            <Ingredient
+              title="Cancel"
+              img="https://www.iconpacks.net/icons/2/free-refresh-icon-3104-thumb.png"
+              onClick={cancelClickHandler}
+              isCancel
+            />
+          )}
         </Style.GridContainer>
       </CSSTransition>
     </Style.MainSection>

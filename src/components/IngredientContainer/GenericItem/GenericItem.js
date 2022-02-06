@@ -4,7 +4,7 @@ import { breakpoint } from "styled-components-breakpoint";
 
 const GenericItem = (props) => {
   return (
-    <Style.GenericItem onClick={props.onClick}>
+    <Style.GenericItem onClick={props.onClick} isCancel={props.isCancel}>
       <img src={props.img} />
       <p>{props.title}</p>
     </Style.GenericItem>
@@ -34,12 +34,15 @@ const Style = {
       border-radius: 50%;
       transition: filter 0.2s, transform 0.2s;
       margin-bottom: 0.5rem;
+      opacity: ${(props) => (props.isCancel ? "0.2" : "1")};
+      transform: ${(props) =>
+        props.isCancel ? "scale(-1, 1)" : "scale(1, 1)"};
 
       ${breakpoint("desktop")`
         filter: grayscale(1);
         width: 7rem;
         height: 7rem;
-      `}
+      `};
     }
 
     &:hover {
