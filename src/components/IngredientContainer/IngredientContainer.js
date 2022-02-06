@@ -31,8 +31,12 @@ const IngredientContainer = (props) => {
     setCurrentCategory(category.id);
   };
 
-  const ingredientClickHandler = (title) => {
+  const ingredientClickHandler = (id) => {
     setCurrentCategory(null);
+    const selectedIngredient = currentIngredients.find(
+      (elem) => elem.id === id
+    );
+    props.onIngredientSelected(selectedIngredient);
   };
 
   return (

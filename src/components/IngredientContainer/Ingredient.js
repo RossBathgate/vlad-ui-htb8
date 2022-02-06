@@ -4,7 +4,11 @@ import GenericItem from "./GenericItem/GenericItem";
 
 const Ingredient = (props) => {
   return (
-    <GenericItem onClick={props.onClick} title={props.title} img={props.img} />
+    <GenericItem
+      onClick={() => props.onClick(props.id)}
+      title={props.title}
+      img={props.img}
+    />
   );
 };
 
