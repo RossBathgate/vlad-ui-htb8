@@ -18,12 +18,26 @@ const IngredientContainer = (props) => {
 
   useEffect(() => {
     setTimeout(() => {
-      if (mainSectionRef.current && categoriesContainerRef.current) {
-        mainSectionRef.current.style.height =
-          categoriesContainerRef.current.offsetHeight + "px";
+      if (mainSectionRef.current) {
+        if (categoriesContainerRef.current && !ingredientsContainerRef.current) {
+          mainSectionRef.current.style.height =
+            categoriesContainerRef.current.offsetHeight + "px";
+        } else if (
+          ingredientsContainerRef.current &&
+          !categoriesContainerRef.current
+        ) {
+          mainSectionRef.current.style.height =
+            ingredientsContainerRef.current.offsetHeight + "px";
+        } else {
+          const max = Math.max(
+            ingredientsContainerRef.current.offsetHeight,
+            categoriesContainerRef.current.offsetHeight
+          );
+          mainSectionRef.current.style.height = max + "px";
+        }
       }
     }, 100);
-  }, [categoriesContainerRef.current]);
+  }, [categoriesContainerRef.current, ingredientsContainerRef.current]);
 
   useEffect(() => {
     const getIngredients = async () => {
