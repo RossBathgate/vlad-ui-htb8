@@ -5,3 +5,5 @@ Use `yarn build` to build the project for distribution. This exports files to a 
 ### Important tech used:
 - React
 - Styled Components
+# View the Final Project
+You can access the final project here: https://admiring-benz-2316ff.netlify.app/
